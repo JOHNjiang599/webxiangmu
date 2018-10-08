@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+{% block title %}Flasky{% endblock %}
+</head>
+<body>
+{% block page_content %}
+    <div class="page-header">
+        <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+    </div>
+    {{ wtf.quick_form(form) }}
+    <p>thie local date and time is {{ moment(current_time).format('LLLL') }}.</p>
+    <p>Thai was {{ moment(current_time).fromNow(refresh=True) }}</p>
+
+{% endblock %}
+
+
+</body>
+</html>
+
+
+
+
+
