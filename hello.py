@@ -13,7 +13,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'wocanimei'
-#如果这里不加一个secret key， 那么就会被500，服务出错，需要使用csrf
+#如果这里不加一个secret key， 那么就会被500，服务出错，需要使用csrf 嗯
 app.config['SQLALCHEMY_DATABASE_URI'] = \
     'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 #这里之前连接mysql出问题了，一直没有解决，我猜想是没有设置远程登录的问题，等下次再试。这次先用sqlite进行学习
