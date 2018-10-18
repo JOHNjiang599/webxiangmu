@@ -8,7 +8,7 @@ from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-
+from flask_migrate import Migrate
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
@@ -24,6 +24,8 @@ db = SQLAlchemy(app)
 moment = Moment(app)
 
 bootstrap = Bootstrap(app)
+
+migrate = Migrate(app,db)
 # @app.route('/')
 # def index():
 # 	return render_template('index.html')
@@ -86,6 +88,10 @@ def index():
                            form=form, name=session.get('name'),
                            known=session.get('known', False))
 
+
+@app.shell_context_processor
+def make_shell_context():
+    return dict(db=db,User=User,Role=Role)
 
 
 
